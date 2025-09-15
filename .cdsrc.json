@@ -1,0 +1,10 @@
+{
+    "requires": {
+      "db": {
+        "kind": "postgres"
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  }
