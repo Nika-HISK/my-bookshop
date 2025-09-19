@@ -12,12 +12,12 @@ target/
 .gen/
 .env
 
-# MTA
+
 *_mta_build_tmp
 *.mtar
 mta_archives/
 
-# Other
+
 .DS_Store
 *.orig
 *.log
