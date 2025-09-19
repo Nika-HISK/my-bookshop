@@ -1,4 +1,3 @@
-# CAP my-bookshop
 _out
 *.db
 *.sqlite
@@ -9,7 +8,6 @@ gen/
 node_modules/
 target/
 
-# Web IDE, App Studio
 .che/
 .gen/
 .env
