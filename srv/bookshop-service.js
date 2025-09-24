@@ -3,7 +3,6 @@ const { SELECT, UPDATE } = cds.ql;
 
 class BookshopService extends cds.ApplicationService {
   init() {
-    // Handle CRUD operations with custom logic
     this.before('CREATE', 'Books', async (req) => {
       const { title, author } = req.data;
       if (!title || !author) {
@@ -12,14 +11,12 @@ class BookshopService extends cds.ApplicationService {
     });
 
     this.before('UPDATE', 'Books', async (req) => {
-      // Add validation before update
       if (req.data.price && req.data.price < 0) {
         req.error(400, 'Price cannot be negative');
       }
     });
 
     this.after('READ', 'Books', async (books, req) => {
-      // Add custom logic after reading books
       if (Array.isArray(books)) {
         books.forEach(book => {
           book.inStock = book.stock > 0;
@@ -29,7 +26,6 @@ class BookshopService extends cds.ApplicationService {
       }
     });
 
-    // Custom action implementation
     this.on('addStock', async (req) => {
       const { bookId, quantity } = req.data;
       const { Books } = this.entities;
@@ -43,7 +39,6 @@ class BookshopService extends cds.ApplicationService {
       return `Added ${quantity} units to book "${book.title}"`;
     });
 
-    // Custom function implementation
     this.on('getBooksByAuthor', async (req) => {
       const { authorName } = req.data;
       const { Books } = this.entities;
